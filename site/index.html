@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NyayaSaathi – free legal information in English, हिंदी, मराठी</title>
+<meta name="description" content="A plain-language legal-information chatbot for people in India. Every answer cites the Act or official scheme, links the official source, and points to free legal aid. Built by Tab, an AI assistant, for team lead Akshay Wagh.">
+<meta property="og:title" content="NyayaSaathi – legal information you can check">
+<meta property="og:description" content="Plain-language answers in English, Hindi and Marathi, grounded in a checked knowledge base of Indian laws and official helplines.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#q">Skip to the question box</a>
+<header class="top">
+  <div class="brand"><img src="icon.svg" alt="" width="40" height="40"><div><h1>NyayaSaathi <span lang="hi">न्याय साथी</span></h1><p class="tag" data-i18n="tag">Free legal information for everyone in India – in simple words</p></div></div>
+  <nav aria-label="Language" class="langs" role="radiogroup">
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हिंदी</button>
+    <button type="button" data-lang="mr" aria-pressed="false" lang="mr">मराठी</button>
+  </nav>
+</header>
+<main>
+  <section class="chat" aria-label="Conversation">
+    <div id="thread" class="thread" aria-live="polite">
+      <div class="msg bot intro">
+        <p data-i18n="hello">Namaste! Ask me about your rights – RTI, FIR, free legal aid, consumer complaints, online fraud, domestic violence, wages, rent, senior citizens and more. I answer only from laws and official pages I have checked, and I always show the source.</p>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+    <form id="ask" class="ask" autocomplete="off">
+      <label for="q" class="sr" data-i18n="label">Your question</label>
+      <textarea id="q" rows="2" maxlength="800" required data-i18n-ph="ph" placeholder="Type your question… e.g. How do I file an RTI?"></textarea>
+      <button type="submit" id="send" data-i18n="send">Ask</button>
+    </form>
+    <p class="fine" data-i18n="fine">Legal information, not legal advice. In an emergency call 112.</p>
+  </section>
+  <aside class="side" aria-label="About NyayaSaathi">
+    <h2 data-i18n="howT">How it works</h2>
+    <ol class="how">
+      <li data-i18n="how1">Your question is matched to entries in a small knowledge base of Indian laws, schemes and helplines – each checked on the official government page.</li>
+      <li data-i18n="how2">An AI model writes a simple answer using only those entries, in your language.</li>
+      <li data-i18n="how3">A code guard blocks any section number, helpline, number or website that is not in the knowledge base.</li>
+      <li data-i18n="how4">Words about violence, threats or suicide skip the AI and show emergency numbers at once.</li>
+    </ol>
+    <p><a href="kb.html" data-i18n="kbLink">See the full knowledge base and its official sources →</a></p>
+    <div class="help">
+      <h2 data-i18n="helpT">Free legal help</h2>
+      <p><strong>15100</strong> – <span data-i18n="nalsa">NALSA legal aid helpline</span></p>
+      <p><a href="https://nalsa.gov.in/legal-aid/" rel="noopener" target="_blank" data-i18n="dlsa">District Legal Services Authority (DLSA) – who is eligible</a></p>
+      <p><a href="https://www.tele-law.in/" rel="noopener" target="_blank" data-i18n="tele">Tele-Law – advice by video at a Common Service Centre</a></p>
+    </div>
+  </aside>
+</main>
+<footer class="foot">
+  <p>Built by Tab, an AI assistant, for team lead Akshay Wagh. · HackIndia “AI for Lawyers” 2026 · PS-02 Access to Justice · <a href="https://github.com/tab-for-akshay/nyayasaathi" rel="noopener">Source code</a> · <a href="demo.mp4">Demo video</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
