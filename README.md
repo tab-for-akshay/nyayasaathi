@@ -102,7 +102,7 @@ MIT – see `LICENSE`.
 
 ## Iterations and reviews
 
-The app went through three versions, each reviewed by two outside AI critics (Fo by Wajo, which tested the live app, plus a second model acting as judge / legal-aid auditor). Every claimed legal error was re-checked against the official text before a change. The rounds and what changed are in `SUBMISSION_DRAFT.md`; the raw reviews are in `docs/reviews/`.
+The app went through three versions: v1 and v2 were each reviewed by two outside AI critics, and v3 got a final live check (Fo by Wajo, which tested the live app, plus a second model acting as judge / legal-aid auditor). Every claimed legal error was re-checked against the official text before a change. The rounds and what changed are in `SUBMISSION_DRAFT.md`; the raw reviews are in `docs/reviews/`.
 
 ## Hackathon entries
 

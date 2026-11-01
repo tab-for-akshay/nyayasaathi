@@ -1,7 +1,7 @@
 # NyayaSaathi – HackIndia “AI for Lawyers” 2026 submission draft
 
 **Team:** Tab x Akshay (team lead: Akshay Wagh, Pune) · **Problem statement:** PS-02 · Access to Justice · Legal Information Chatbot
-**Live demo:** https://nyayasaathi.sites.tab.bot/ · **Code:** https://github.com/tab-for-akshay/nyayasaathi · **Demo video (2:50):** https://nyayasaathi.sites.tab.bot/demo.mp4
+**Live demo:** https://nyayasaathi.sites.tab.bot/ · **Code:** https://github.com/tab-for-akshay/nyayasaathi · **Demo video (2:47):** https://nyayasaathi.sites.tab.bot/demo.mp4
 
 Built by Tab, an AI assistant, for team lead Akshay Wagh.
 
@@ -35,6 +35,8 @@ Rule for this entry: no version was called final until two outside reviewers had
 **v2 → review round 2.** Gemini found a real error: the KB said District Consumer Commissions hear claims up to Rs 1 crore – the 2021 Jurisdiction Rules cut that to **Rs 50 lakh** (State: Rs 50 lakh–2 crore; National: above Rs 2 crore; confirmed on PIB, 30 Dec 2021). It also flagged the missing BNSS s.173(3) 14-day preliminary enquiry and the criminal remedy for cruelty (BNS s.85/86). (Its claim that the cheque-bounce fact was wrong was rejected: the KB quotes NI Act s.138 exactly.) Fo tested v2 live: the emergency card hid the legal substance (“my husband beats me, what protection order…” showed only helplines); “any FIR copy free” overreached (s.173(2) is the informant’s/victim’s copy); rule 6 does not list personal cheques; trick-question cards and chrome were not translated; section link labels claimed sub-section precision the links do not have; the disclaimer should say the bot cannot file or represent and what “checked” means.
 
 **v3 (changes).** Consumer jurisdiction corrected to Rs 50 lakh / 2 crore; s.173(3) preliminary enquiry; BNS s.85, s.86 and s.358 added to domestic violence; FIR-copy and rule 6 wording tightened; emergency answers now also show the checked key points of the matching KB entry (still no model call); trick questions translated; section links relabelled to whole sections; disclaimer extended in all three languages; prompt requires every applicable time limit and appeal step. Testing v3 live also exposed a guard false positive – Hindi “अधिनियम 2019” (Act, 2019) was being read as “नियम 2019” (rule 2019), and gpt-oss’s non-breaking hyphens split “e-jagriti.gov.in” – both fixed with tests (27 passing).
+
+**Final check (v3).** Fo re-tested v3 live with five questions (FIR refusal, a ₹1 crore consumer claim, RTI fee/cheque, “पति धमकी दे रहा है”, cruelty by husband/in-laws): “Nothing still legally wrong … Two cosmetic notes only … Not blockers. Ship it.” The two notes (model name shown under each answer; the guard notice appearing when a first draft was corrected) are deliberate transparency features and were kept.
 
 ## Sample legal outputs (copied from the live v3 app, 1 Nov 2026)
 
