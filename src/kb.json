@@ -503,12 +503,15 @@
     "तडजोड",
     "pending case",
     "court fee refund",
-    "mediation"
+    "mediation",
+    "national lok adalat",
+    "traffic challan"
    ],
    "facts": [
     "Lok Adalats are organised by Legal Services Authorities to settle disputes by compromise (Legal Services Authorities Act s.19).",
     "A Lok Adalat award is treated as a decree of a civil court; where a pending case is settled, the court-fee already paid is refunded (s.21(1)).",
-    "The award is final and binding on all parties, and no appeal lies against it (s.21(2))."
+    "The award is final and binding on all parties, and no appeal lies against it (s.21(2)).",
+    "NALSA's 2026 schedule lists four National Lok Adalats; the fourth is on 12 December 2026 (ask your DLSA or call 15100 for your district's date)."
    ],
    "steps": [
     "Ask the DLSA (or call 15100) about the next Lok Adalat.",
@@ -542,9 +545,139 @@
      "url": "https://indiacode.gov.in/items/e5e50da5-ca26-4bdd-95d5-05fd83735b71",
      "checked": "2026-11-01",
      "what": "s.21 text"
+    },
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s3f8df2e15374e3dc37766e59ac494f0fd/uploads/2026/01/202601221103944766.pdf",
+     "checked": "2026-11-01",
+     "what": "NALSA 2026 schedule: four National Lok Adalats, fourth on 12 December 2026"
     }
    ],
-   "related": []
+   "related": [
+    "permanent_lok_adalat",
+    "prelitigation_mediation"
+   ]
+  },
+  {
+   "id": "permanent_lok_adalat",
+   "title": "Permanent Lok Adalat (public utility services)",
+   "kw": [
+    "electricity bill",
+    "power bill",
+    "water bill",
+    "bus",
+    "railway",
+    "airline",
+    "courier",
+    "post",
+    "telephone",
+    "mobile bill",
+    "hospital bill",
+    "insurance claim",
+    "बिजली बिल",
+    "बीमा",
+    "विमा",
+    "वीज बिल",
+    "public utility"
+   ],
+   "facts": [
+    "Under the Legal Services Authorities Act, 1987 (LSA Act), LSA Act s.22A(b): 'public utility service' means transport of passengers or goods by air, road or water; postal, telegraph or telephone service; supply of power, light or water to the public; public conservancy or sanitation; service in a hospital or dispensary; insurance service (plus any service a government notifies).",
+    "LSA Act s.22C(1): any party may apply to the Permanent Lok Adalat BEFORE the dispute is brought before any court; it has no jurisdiction over an offence that is not compoundable under any law.",
+    "LSA Act s.22C(2): after applying, no party may take the same dispute to any court.",
+    "LSA Act s.22C(8): if the parties do not agree, the Permanent Lok Adalat itself decides the dispute (if it does not relate to any offence).",
+    "LSA Act s.22E: its award is final and binding, is deemed a decree of a civil court, cannot be questioned in any original suit, application or execution proceeding, and can be sent to the civil court to execute.",
+    "The jurisdiction of the Permanent Lok Adalats is upto Rs. One Crore. It is a compulsory pre-litigative mechanism for conciliation and settlement of public utility disputes."
+   ],
+   "steps": [
+    "Write a short application to the Permanent Lok Adalat at your District Legal Services Authority (or call 15100 to find it).",
+    "Attach the bill/policy/receipts.",
+    "Attend the conciliation; if no settlement, it decides.",
+    "Do not file the same dispute in a court after applying."
+   ],
+   "sections": [
+    "LSA Act s.22A",
+    "LSA Act s.22C",
+    "LSA Act s.22E"
+   ],
+   "helplines": [
+    "15100"
+   ],
+   "links": [
+    {
+     "label": "NALSA Permanent Lok Adalat page",
+     "url": "https://nalsa.gov.in/permanent-lok-adalat/"
+    },
+    {
+     "label": "Legal Services Authorities Act, 1987 – India Code",
+     "url": "https://indiacode.gov.in/act/253a0a32-48bd-447f-923b-a0eb49d108ee/details"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://cdnbbsr.s3waas.gov.in/s32e45f93088c7db59767efef516b306aa/uploads/2025/04/202504081796627129.pdf",
+     "checked": "2026-11-01",
+     "what": "LSA Act s.22A(b), s.22C(1),(2),(8), s.22E text"
+    },
+    {
+     "url": "https://nalsa.gov.in/permanent-lok-adalat/",
+     "checked": "2026-11-01",
+     "what": "NALSA page: jurisdiction up to Rs. One Crore; compulsory pre-litigative mechanism"
+    }
+   ],
+   "related": [
+    "lok_adalat",
+    "prelitigation_mediation"
+   ]
+  },
+  {
+   "id": "prelitigation_mediation",
+   "title": "Pre-litigation mediation",
+   "kw": [
+    "mediation",
+    "mediator",
+    "settle before court",
+    "pre-litigation",
+    "out of court settlement",
+    "मध्यस्थता",
+    "मध्यस्थी",
+    "family dispute settlement",
+    "property dispute settlement",
+    "neighbour dispute"
+   ],
+   "facts": [
+    "Under the Mediation Act, 2023, Mediation Act 2023 s.5(1): before filing any civil or commercial suit or proceeding in any court, the parties may voluntarily and with mutual consent try to settle the dispute by pre-litigation mediation under this Act (commercial disputes of Specified Value follow s.12A of the Commercial Courts Act, 2015).",
+    "Mediation Act 2023 s.18(1): mediation must be completed within 120 days from the date fixed for the first appearance before the mediator.",
+    "Mediation Act 2023 s.18(2): the parties may agree to extend it by a further period of not more than 60 days."
+   ],
+   "steps": [
+    "Both sides agree to try mediation.",
+    "Approach the mediation centre of your District Legal Services Authority or court (call 15100 to locate it).",
+    "Attend; it should finish in 120 days (+ up to 60 days if both agree).",
+    "If it fails you can still go to court."
+   ],
+   "sections": [
+    "Mediation Act 2023 s.5",
+    "Mediation Act 2023 s.18"
+   ],
+   "helplines": [
+    "15100"
+   ],
+   "links": [
+    {
+     "label": "Mediation Act, 2023 – Gazette PDF",
+     "url": "https://egazette.gov.in/WriteReadData/2023/248775.pdf"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://egazette.gov.in/WriteReadData/2023/248775.pdf",
+     "checked": "2026-11-01",
+     "what": "Mediation Act 2023 s.5(1), s.18(1)-(2) text"
+    }
+   ],
+   "related": [
+    "lok_adalat",
+    "permanent_lok_adalat"
+   ]
   },
   {
    "id": "tele_law",
