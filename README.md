@@ -2,8 +2,8 @@
 
 **Live demo:** https://nyayasaathi.sites.tab.bot/ · **Knowledge base & sources:** https://nyayasaathi.sites.tab.bot/kb.html · **Demo video:** https://nyayasaathi.sites.tab.bot/demo.mp4
 
-> Built by Tab, an AI assistant, for team lead Akshay Wagh.
-> HackIndia “⚖️ AI for Lawyers Hackathon” 2026 · Team “Tab x Akshay” · PS-02 · Access to Justice · Legal Information Chatbot.
+> Built by Tab, an AI assistant, for team lead Akshay Wagh. MIT licensed.
+> `npm test`: **27/27 passing** (guard, emergency path, mocked-model flow, KB integrity, site checks).
 
 NyayaSaathi is a plain-language legal-information chatbot for ordinary people in India. Ask in **English, हिंदी or मराठी**. Every answer:
 
@@ -12,13 +12,20 @@ NyayaSaathi is a plain-language legal-information chatbot for ordinary people in
 3. tells you where to get free help (NALSA helpline 15100, your District Legal Services Authority, Tele-Law);
 4. states that it is legal information, not legal advice.
 
+## Try to break it
+
+* “Which RTI section gives an answer in 10 days, and what is the RTI helpline number?” – there is no such section or helpline; the bot says so instead of inventing one.
+* “Section 154 CrPC – police won't take my complaint” – old-law citation routes to BNSS s.173 / s.175(3).
+* “पति धमकी दे रहा है” / “My husband beats me…” – emergency path: 112 / 181 / 14416 plus the checked legal points, with no model call.
+* “How do I get a divorce?” – not in the checked KB, so an honest “I won’t guess” card with free legal aid.
+
 ## Why it is safe to use: no invented law
 
 * **Curated, checked knowledge base** – `src/kb.json` has 20 entries (RTI application and appeals, FIR / Zero FIR / e-FIR, police refusing an FIR, arrest rights, free legal aid eligibility, Lok Adalat, Tele-Law, consumer complaints, cyber fraud, domestic violence, workplace sexual harassment, senior-citizen maintenance, maintenance for wife/children/parents, unpaid wages, cheque bounce, Maharashtra rent agreements, bank/RBI ombudsman complaints, women & child helplines, mental-health support). **Every fact, section number, fee, time limit, helpline and URL was checked on the official page on 1 Nov 2026**, and each entry records the source URL, what it confirmed and the date. Anything that could not be verified was left out.
 * **Retrieval first** – the question is routed to at most three entries (an LLM router constrained to valid entry ids, plus keyword matching in English, Hindi and Marathi). If nothing matches, the bot says so and points to legal aid – it does not guess.
 * **Grounded generation** – the model sees only the retrieved entries and is told to use nothing else.
 * **Code-level guard** (`guard()` in `src/core.mjs`) – after generation, every section number, every number of 2+ digits (helplines, fees, days, years, amounts – Devanagari digits included), and every website in the answer must appear in the retrieved entries. Numbers the person typed themselves (e.g. “I lost 20000”) may be repeated; section numbers may not. On a violation the model gets one corrective retry; if it still fails, the app shows the checked KB text itself. Links, sources and the free-help box are always rendered by code from the KB, never by the model.
-* **Emergency path** – messages with words about violence, threats to life or suicide (English, Hindi, Marathi, Hinglish) skip the model entirely and get a fixed message with **112**, **Women Helpline 181** and **Tele-MANAS 14416** (plus 15100 for legal aid once safe).
+* **Emergency path** – messages with words about violence, threats or suicide (English, Hindi, Marathi, Hinglish) skip the model entirely and get a fixed message with **112**, **Women Helpline 181** and **Tele-MANAS 14416** (plus 15100 for legal aid once safe), followed by the checked key points of the matching KB entry. A red “Emergency help” button with tap-to-call numbers is on every screen.
 
 ## AI workflow and models
 
@@ -91,3 +98,14 @@ This project – code, knowledge base research and verification, text, video nar
 ## License
 
 MIT – see `LICENSE`.
+
+
+## Iterations and reviews
+
+The app went through three versions, each reviewed by two outside AI critics (Fo by Wajo, which tested the live app, plus a second model acting as judge / legal-aid auditor). Every claimed legal error was re-checked against the official text before a change. The rounds and what changed are in `SUBMISSION_DRAFT.md`; the raw reviews are in `docs/reviews/`.
+
+## Hackathon entries
+
+* HackIndia “⚖️ AI for Lawyers Hackathon” 2026 – team “Tab x Akshay”, PS-02 Access to Justice (Legal Information Chatbot).
+
+The code is generic: swap or extend `src/kb.json` (each entry: facts, sections, helplines, links, dated sources, keywords, related entries) and the same guard and tests apply.

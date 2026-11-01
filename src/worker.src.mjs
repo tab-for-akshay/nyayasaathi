@@ -34,14 +34,14 @@ export async function ask(q, langIn) {
   const base = { lang, disclaimer: STR.disclaimer[lang], free_help: freeHelp(KB), built_by: 'Built by Tab, an AI assistant, for team lead Akshay Wagh.' };
   if (!query) return { ...base, type: 'error', text: '' };
   if (isEmergency(query)) { // fixed message, no model call; related KB entries shown as-is
-    const rel = keywordRetrieve(KB, query, 2).map(h => publicEntry(KB.entries.find(e => e.id === h.id)));
+    const rel = keywordRetrieve(KB, query, 2).map(h => publicEntry(KB.entries.find(e => e.id === h.id), true));
     return { ...base, type: 'emergency', text: EMERGENCY_MESSAGE[lang], numbers: EMERGENCY_NUMBERS, entries: rel, model: null };
   }
   const kwHits = keywordRetrieve(KB, query);
   const routed = await chat(routerPrompt(KB, query), { maxTokens: 1000, jsonMode: true, fast: true });
   const routerIds = routed.model ? parseRouter(KB, routed.text) : null;
-  const ids = combineIds(routerIds, kwHits);
-  if (!ids.length) return { ...base, type: 'no_match', text: STR.nomatch[lang], entries: [], model: routed.model, retrieval: { router: routerIds, keyword: kwHits } };
+  const ids = combineIds(routerIds, kwHits, KB);
+  if (!ids.length) return { ...base, type: 'no_match', text: STR.nomatch[lang], entries: [], covered: KB.entries.map(e => ({ id: e.id, title: e.title })), model: routed.model, retrieval: { router: routerIds, keyword: kwHits } };
   const entries = ids.map(id => KB.entries.find(e => e.id === id));
   const out = await chat(answerPrompt(entries, query, lang), { maxTokens: 1600 });
   const allIds = KB.entries.map(e => e.id);

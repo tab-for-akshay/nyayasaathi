@@ -7,7 +7,7 @@ const w = await import('../site/worker.mjs');
 let calls = 0, script = [];
 globalThis.fetch = async (url, init) => { calls++; const next = script.shift(); if (!next) throw new Error('unexpected network call to ' + url); return new Response(JSON.stringify({ choices: [{ message: { content: next } }] }), { status: 200 }); };
 
-const EMERG = ['I want to kill myself', 'my husband beats me every day', 'He threatened to kill me tonight', 'मैं आत्महत्या करना चाहता हूँ', 'पति रोज़ मारपीट करता है', 'मला जीव द्यायचा आहे', 'नवरा मला मारहाण करत आहे', 'mujhe maar dalega', 'there was an acid attack on my sister'];
+const EMERG = ['he is threatening me with a knife', 'पति धमकी दे रहा है', 'नवरा धमकी देत आहे', 'I want to kill myself', 'my husband beats me every day', 'He threatened to kill me tonight', 'मैं आत्महत्या करना चाहता हूँ', 'पति रोज़ मारपीट करता है', 'मला जीव द्यायचा आहे', 'नवरा मला मारहाण करत आहे', 'mujhe maar dalega', 'there was an acid attack on my sister'];
 test('emergency words are detected in English, Hindi, Marathi and Hinglish', () => { for (const q of EMERG) assert.equal(c.isEmergency(q), true, q); });
 test('ordinary questions are not treated as emergencies', () => { for (const q of ['How do I file an RTI?', 'मेरी सैलरी नहीं मिली', 'माझे भाडे करार', 'cheque bounce notice', 'online fraud 20000']) assert.equal(c.isEmergency(q), false, q); });
 test('emergency path returns the fixed message with 112, 181, 14416 and makes NO model call', async () => {
@@ -34,7 +34,7 @@ test('a corrective retry that removes the invented number is accepted', async ()
 test('a clean model answer passes and cites KB sources', async () => {
   script = ['{"ids":["rti_apply"]}', 'You can ask the PIO for information (RTI Act s.6). Fee Rs 10 for Central offices; reply within 30 days (s.7).'];
   const r = await w.ask('How do I file an RTI?', 'en');
-  assert.equal(r.answer_source, 'model'); assert.deepEqual(r.entries.map(e => e.id), ['rti_apply']);
+  assert.equal(r.answer_source, 'model'); assert.deepEqual(r.entries.map(e => e.id), ['rti_apply', 'rti_appeal']);
   assert.ok(r.entries[0].links.some(l => l.url.startsWith('https://rtionline.gov.in')));
   assert.match(r.disclaimer, /not legal advice/);
 });
@@ -50,4 +50,10 @@ test('router ids that are not in the KB are ignored', () => {
 });
 test('language detection: English, Hindi, Marathi', () => {
   assert.equal(c.detectLang('my salary'), 'en'); assert.equal(c.detectLang('मेरी सैलरी नहीं मिली, क्या करूँ?'), 'hi'); assert.equal(c.detectLang('माझा पगार मिळाला नाही'), 'mr');
+});
+
+test('related entries are pulled in (FIR refused -> Zero FIR, RTI -> appeal)', () => {
+  const kb = { entries: [{ id: 'fir_refused', related: ['fir_zero'] }, { id: 'fir_zero', related: [] }, { id: 'rti_apply', related: ['rti_appeal'] }, { id: 'rti_appeal', related: [] }] };
+  assert.deepEqual(c.combineIds(['fir_refused'], [], kb), ['fir_refused', 'fir_zero']);
+  assert.deepEqual(c.combineIds(['rti_apply'], [], kb), ['rti_apply', 'rti_appeal']);
 });

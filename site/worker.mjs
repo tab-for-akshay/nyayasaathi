@@ -23,13 +23,13 @@ const EMERGENCY_TERMS = [
   // English
   'suicide', 'suicidal', 'kill myself', 'killing myself', 'end my life', 'take my life', 'want to die', 'wanna die', 'hang myself', 'self harm', 'self-harm',
   'will kill me', 'going to kill me', 'gonna kill me', 'threatening to kill', 'threatened to kill', 'threat to my life', 'life is in danger', 'my life is at risk',
-  'beating me', 'beats me', 'beat me', 'hits me', 'hit me', 'slapped me', 'is hitting me', 'hitting me now', 'attacking me', 'being beaten', 'he is beating', 'raped', 'rape ', 'kidnapped', 'acid attack', 'locked me in',
+  'threatening me', 'threatens me', 'threatened me', 'beating me', 'beats me', 'beat me', 'hits me', 'hit me', 'slapped me', 'is hitting me', 'hitting me now', 'attacking me', 'being beaten', 'he is beating', 'raped', 'rape ', 'kidnapped', 'acid attack', 'locked me in',
   // Hinglish (Latin script)
-  'aatmahatya', 'atmahatya', 'khudkushi', 'marna chahta', 'marna chahti', 'jaan de dunga', 'jaan de dungi', 'jaan se maar', 'maar dalega', 'maar dalenge', 'maar daalega', 'mujhe maar raha', 'marta hai', 'maarta hai', 'peet-ta', 'peetta hai', 'peet raha', 'pit raha', 'balatkar', 'jeev denar',
+  'aatmahatya', 'atmahatya', 'khudkushi', 'marna chahta', 'marna chahti', 'jaan de dunga', 'jaan de dungi', 'jaan se maar', 'maar dalega', 'maar dalenge', 'maar daalega', 'mujhe maar raha', 'dhamki', 'dhamaki', 'maar peet', 'maarpeet', 'marpeet', 'marta hai', 'maarta hai', 'peet-ta', 'peetta hai', 'peet raha', 'pit raha', 'balatkar', 'jeev denar',
   // Hindi
-  'आत्महत्या', 'खुदकुशी', 'ख़ुदकुशी', 'मरना चाहता', 'मरना चाहती', 'जान दे दूंगा', 'जान दे दूंगी', 'जान दे दूँगा', 'जान दे दूँगी', 'जान से मार', 'मार डालेगा', 'मार डालेंगे', 'मार डालूंगा', 'मुझे मार रहा', 'मुझे मार रहे', 'पीट रहा', 'पीट रहे', 'मारता है', 'पीटता है', 'मारते हैं', 'पीटते हैं', 'मारपीट', 'बलात्कार', 'जान को खतरा', 'जान को ख़तरा', 'अपहरण', 'तेजाब', 'तेज़ाब',
+  'आत्महत्या', 'खुदकुशी', 'ख़ुदकुशी', 'मरना चाहता', 'मरना चाहती', 'जान दे दूंगा', 'जान दे दूंगी', 'जान दे दूँगा', 'जान दे दूँगी', 'जान से मार', 'मार डालेगा', 'मार डालेंगे', 'मार डालूंगा', 'मुझे मार रहा', 'मुझे मार रहे', 'पीट रहा', 'पीट रहे', 'मारता है', 'पीटता है', 'मारते हैं', 'पीटते हैं', 'मारपीट', 'धमकी', 'धमका रहा', 'धमकाता', 'बलात्कार', 'जान को खतरा', 'जान को ख़तरा', 'अपहरण', 'तेजाब', 'तेज़ाब',
   // Marathi
-  'जीव देणार', 'जीव द्यायचा', 'जीव देईन', 'मरायचं आहे', 'मरायचे आहे', 'मरून जावंसं', 'जीवे मारण्याची', 'जीवे मारेल', 'मारून टाकेल', 'मारून टाकीन', 'मला मारत आहे', 'मला मारतोय', 'मारहाण करत आहे', 'मारहाण', 'मारतो', 'मारते', 'जीवाला धोका', 'अपहरण'
+  'जीव देणार', 'जीव द्यायचा', 'जीव देईन', 'मरायचं आहे', 'मरायचे आहे', 'मरून जावंसं', 'जीवे मारण्याची', 'जीवे मारेल', 'मारून टाकेल', 'मारून टाकीन', 'मला मारत आहे', 'मला मारतोय', 'मारहाण करत आहे', 'मारहाण', 'मारतो', 'मारते', 'धमकी देत', 'धमकावत', 'धमकी दिली', 'जीवाला धोका', 'अपहरण'
 ];
 function isEmergency(text) {
   const t = norm(text);
@@ -45,14 +45,14 @@ const EMERGENCY_NUMBERS = ['112', '181', '14416', '15100'];
 // ---------- UI / fixed strings ----------
 const STR = {
   disclaimer: {
-    en: 'This is legal information, not legal advice. For advice on your case, talk to a lawyer – free legal aid is available.',
-    hi: 'यह कानूनी जानकारी है, कानूनी सलाह नहीं। अपने मामले में सलाह के लिए वकील से बात करें – मुफ्त कानूनी सहायता उपलब्ध है।',
-    mr: 'ही कायदेशीर माहिती आहे, कायदेशीर सल्ला नाही. तुमच्या प्रकरणासाठी वकिलाशी बोला – मोफत कायदेशीर मदत उपलब्ध आहे.'
+    en: 'This is legal information, not legal advice. NyayaSaathi is not a lawyer and cannot file a case or represent you; for advice on your case, talk to a lawyer – free legal aid is available. "Checked" dates show when the official source was last verified, not a live check.',
+    hi: 'यह कानूनी जानकारी है, कानूनी सलाह नहीं। न्याय साथी वकील नहीं है और आपका केस दायर या आपकी पैरवी नहीं कर सकता; अपने मामले में सलाह के लिए वकील से बात करें – मुफ्त कानूनी सहायता उपलब्ध है। "जाँचा गया" तारीख बताती है कि सरकारी स्रोत आख़िरी बार कब जाँचा गया।',
+    mr: 'ही कायदेशीर माहिती आहे, कायदेशीर सल्ला नाही. न्याय साथी वकील नाही आणि तुमचा खटला दाखल करू शकत नाही किंवा तुमची बाजू मांडू शकत नाही; तुमच्या प्रकरणासाठी वकिलाशी बोला – मोफत कायदेशीर मदत उपलब्ध आहे. "तपासले" तारीख सरकारी स्रोत शेवटचा कधी तपासला ते सांगते.'
   },
   nomatch: {
-    en: 'Sorry – my checked knowledge base does not cover this question yet, so I will not guess. Please contact free legal aid: call the NALSA helpline 15100 or go to the District Legal Services Authority (DLSA) of your district. You can also get advice by video through Tele-Law at a Common Service Centre.',
-    hi: 'क्षमा करें – मेरे जाँचे गए ज्ञानकोश में अभी इस सवाल की जानकारी नहीं है, इसलिए मैं अनुमान नहीं लगाऊँगा। कृपया मुफ्त कानूनी सहायता लें: NALSA हेल्पलाइन 15100 पर कॉल करें या अपने जिले के जिला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें। आप कॉमन सर्विस सेंटर पर टेली-लॉ से वीडियो पर सलाह भी ले सकते हैं।',
-    mr: 'माफ करा – माझ्या तपासलेल्या माहितीसंग्रहात अजून या प्रश्नाची माहिती नाही, म्हणून मी अंदाज लावणार नाही. कृपया मोफत कायदेशीर मदत घ्या: NALSA हेल्पलाइन 15100 वर कॉल करा किंवा तुमच्या जिल्ह्याच्या जिल्हा विधी सेवा प्राधिकरणाशी (DLSA) संपर्क करा. कॉमन सर्व्हिस सेंटरवर टेली-लॉद्वारे व्हिडिओवर सल्लाही मिळू शकतो.'
+    en: 'I only answer from laws and official pages I have checked, and this question is not one of them yet – so I will not guess. Please contact free legal aid: call the NALSA helpline 15100 or go to the District Legal Services Authority (DLSA) of your district. You can also get advice by video through Tele-Law at a Common Service Centre.',
+    hi: 'मैं सिर्फ़ उन्हीं कानूनों और सरकारी पेजों से जवाब देता हूँ जिन्हें मैंने जाँचा है, और यह सवाल अभी उनमें नहीं है – इसलिए मैं अनुमान नहीं लगाऊँगा। कृपया मुफ्त कानूनी सहायता लें: NALSA हेल्पलाइन 15100 पर कॉल करें या अपने जिले के जिला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें। आप कॉमन सर्विस सेंटर पर टेली-लॉ से वीडियो पर सलाह भी ले सकते हैं।',
+    mr: 'मी फक्त तपासलेल्या कायद्यांवरून आणि सरकारी पानांवरून उत्तर देतो, आणि हा प्रश्न अजून त्यात नाही – म्हणून मी अंदाज लावणार नाही. कृपया मोफत कायदेशीर मदत घ्या: NALSA हेल्पलाइन 15100 वर कॉल करा किंवा तुमच्या जिल्ह्याच्या जिल्हा विधी सेवा प्राधिकरणाशी (DLSA) संपर्क करा. कॉमन सर्व्हिस सेंटरवर टेली-लॉद्वारे व्हिडिओवर सल्लाही मिळू शकतो.'
   },
   fallbackNote: {
     en: 'Showing the checked facts directly from the knowledge base.',
@@ -87,11 +87,13 @@ function parseRouter(kb, raw) {
     return [...new Set(j.ids.filter(x => valid.has(x)))].slice(0, 3);
   } catch { return null; }
 }
-function combineIds(routerIds, kwHits) {
+function combineIds(routerIds, kwHits, kb) {
   const ids = [];
   for (const id of routerIds || []) if (!ids.includes(id)) ids.push(id);
   for (const h of kwHits || []) if (h.score >= 2 && !ids.includes(h.id)) ids.push(h.id);
   if (routerIds === null && kwHits && kwHits.length && !ids.length) ids.push(kwHits[0].id); // model unavailable: best keyword hit
+  // pull in linked entries (e.g. FIR refused -> Zero FIR, RTI -> RTI appeal) so the answer covers the whole escalation ladder
+  if (kb && ids.length) for (const id of [...ids]) { const e = kb.entries.find(x => x.id === id); for (const r of (e && e.related) || []) if (ids.length < 3 && !ids.includes(r)) ids.push(r); }
   return ids.slice(0, 3);
 }
 
@@ -102,14 +104,16 @@ function entryContext(e) {
 function answerPrompt(entries, query, lang) {
   const sys = `You are NyayaSaathi, a careful legal-INFORMATION assistant for ordinary people in India. You answer ONLY from the knowledge-base entries given below, which were checked against official government sources.
 Rules:
-- Write the whole answer in ${LANG_NAME[lang]}. Keep Act names and section references recognisable (e.g. "RTI Act s.6", "BNSS s.173").
+- Write the whole answer in ${LANG_NAME[lang]}, including headings. ${lang === 'hi' ? 'Write the word for section as "धारा" (e.g. "BNSS धारा 173").' : lang === 'mr' ? 'Write the word for section as "कलम" (e.g. "BNSS कलम 173").' : 'Cite sections like "RTI Act s.6", "BNSS s.173".'}
+- If the person cites an old law (CrPC/IPC), use only what the entries say about the new law; do not state old-to-new section equivalents unless an entry states them.
 - Use only facts, numbers, section numbers, fees, time limits and helpline numbers that appear in the entries. Never add any other law, section, number, website or helpline.
 - Do not draw conclusions the entries do not state. If the entries do not answer the exact point asked (for example a deposit refund, a punishment, a deadline), say clearly that the checked information does not cover that point, share only what the entries do say that is relevant, and suggest free legal aid.
 - Write every number with ASCII digits (0-9), exactly as in the entries.
 - Simple words, short sentences, warm tone. No legal jargon without explaining it.
 - Do not add examples, offices, departments, organisations, websites or procedures that are not named in the entries – not even as "e.g.".
 - Never mention the knowledge base, entries or their ids (like [rti_apply] or "cyber fraud entry"); cite the Act and section, or the official helpline/portal, instead.
-- Format: 1) one or two short paragraphs explaining the person's rights, citing the Act/section from the entries in brackets; 2) the heading "${{ en: 'Next steps', hi: 'आगे क्या करें', mr: 'पुढील पावले' }[lang]}", then a numbered list of 3-5 steps taken from the entries.
+- Include every time limit, fee and escalation step (e.g. appeals) from the entries that applies to the person's next steps.
+- Format: 1) FIRST LINE: the single most important action or right, in one plain sentence (e.g. what to do today, with the fee or deadline). 2) At most 120 words explaining the person's rights, each claim followed by its Act/section in brackets. 3) the heading "${{ en: 'Next steps', hi: 'आगे क्या करें', mr: 'पुढील पावले' }[lang]}", then a numbered list of 3-5 steps taken from the entries.
 - Do not add a "free help" line or a disclaimer – the app shows both. Do not predict who will win.
 - Plain text only, no markdown symbols like ** or #.
 Knowledge-base entries:
@@ -130,7 +134,7 @@ function allowedNumbers(entries, extra = []) {
   }
   return set;
 }
-const SECTION_RE = /(?:\bsections?\b|\bsec\.?|\bs\.|\bu\/s\b|धारा|धारा-|कलम|सेक्शन|नियम|\brule\b)\s*(\d+[a-z]?)/gi;
+const SECTION_RE = /(?:\bsections?\b|\bsec\.?|\bs\.|\bu\/s\b|धारा|धारा-|कलम|सेक्शन|(?<![\u0900-\u097F])नियम|\brule\b)\s*(\d+[a-z]?)/gi; // "अधिनियम" (Act) is not "नियम" (rule)
 function sectionNumbersIn(s) { const out = []; let m; const t = asciiDigits(s); SECTION_RE.lastIndex = 0; while ((m = SECTION_RE.exec(t))) out.push(m[1].toLowerCase()); return out; }
 function allowedSections(entries) {
   const set = new Set();
@@ -166,14 +170,14 @@ function fallbackAnswer(entries) {
 function retryNote(problems) {
   return 'Your previous draft contained these items that are NOT in the knowledge-base entries: ' + problems.map(p => p.kind + ' ' + p.value).join(', ') + '. Rewrite the answer without them, using only numbers, sections and websites that appear in the entries.';
 }
-function cleanModelText(s, ids = []) { let t = String(s || ''); for (const id of ids) t = t.split('(' + id + ')').join('').split('[' + id + ']').join('').split(id).join(''); return t.replace(/\*\*|__|^#+\s*/gm, '').replace(/\n{3,}/g, '\n\n').trim(); }
+function cleanModelText(s, ids = []) { let t = String(s || '').replace(/[\u2010-\u2015\u2212]/g, '-').replace(/[\u00a0\u202f\u2007]/g, ' '); for (const id of ids) t = t.split('(' + id + ')').join('').split('[' + id + ']').join('').split(id).join(''); return t.replace(/\*\*|__|^#+\s*/gm, '').replace(/\n{3,}/g, '\n\n').trim(); }
 
 // ---------- free-help block (numbers come from the KB entries) ----------
 function freeHelp(kb) {
   const la = kb.entries.find(e => e.id === 'legal_aid'), tl = kb.entries.find(e => e.id === 'tele_law');
   return { helpline: '15100', legal_aid_link: la.links[0], tele_law_link: tl.links[0], nalsa: { label: 'NALSA', url: 'https://nalsa.gov.in/' } };
 }
-function publicEntry(e) { return { id: e.id, title: e.title, sections: e.sections, helplines: e.helplines, links: e.links, sources: e.sources }; }
+function publicEntry(e, withFacts = false) { const p = { id: e.id, title: e.title, sections: e.sections, helplines: e.helplines, links: e.links, sources: e.sources }; if (withFacts) p.facts = e.facts; return p; }
 
 const KB = {
  "name": "NyayaSaathi knowledge base",
@@ -204,20 +208,23 @@ const KB = {
     "Any citizen can ask a government office (public authority) for information by writing to its Public Information Officer (PIO), on paper or electronically, in English, Hindi or the official language of the area (RTI Act s.6(1)).",
     "You do not have to give any reason for asking, or personal details other than what is needed to contact you (s.6(2)).",
     "The PIO must reply within 30 days; if the information concerns the life or liberty of a person, within 48 hours (s.7(1)).",
-    "For Central Government offices the application fee is Rs 10 (RTI Rules, 2012, rule 3). Applicants below the poverty line pay no fee if they attach a copy of their BPL certificate (rule 5). State offices follow their own State RTI rules for fees.",
-    "Central Ministries/Departments and other Central public authorities listed on the portal can be asked online at rtionline.gov.in."
+    "For Central Government offices the application fee is Rs 10 (RTI Rules, 2012, rule 3). Applicants below the poverty line pay no application fee and no fee for the information (copies) if they attach a copy of their BPL certificate (rule 5). State offices follow their own State RTI rules for fees.",
+    "Central Ministries/Departments and other Central public authorities listed on the portal can be asked online at rtionline.gov.in.",
+    "For Central offices the fee can be paid in cash against a proper receipt, by demand draft, banker's cheque or Indian Postal Order (payable to the Accounts Officer), or electronically where the office accepts it (RTI Rules, 2012, rule 6). A personal cheque is not one of the listed modes."
    ],
    "steps": [
     "Write a short, specific question (what document, which period).",
     "Address it to the PIO of the right office, or file online at rtionline.gov.in for Central offices.",
     "Pay the fee (Rs 10 for Central offices) or attach the BPL certificate.",
-    "Keep the receipt/registration number and count 30 days."
+    "Keep the receipt/registration number and count 30 days.",
+    "If there is no reply in 30 days, file a first appeal (see \"RTI appeals\")."
    ],
    "sections": [
     "RTI Act s.6",
     "RTI Act s.7",
     "RTI Rules 2012 rule 3",
-    "RTI Rules 2012 rule 5"
+    "RTI Rules 2012 rule 5",
+    "RTI Rules 2012 rule 6"
    ],
    "helplines": [],
    "links": [
@@ -228,6 +235,10 @@ const KB = {
     {
      "label": "RTI Act, 2005 – India Code",
      "url": "https://indiacode.gov.in/act/37520cf3-5c3f-4c0b-aa4a-5985e6f522bf/details"
+    },
+    {
+     "label": "Section text on India Code (s.6)",
+     "url": "https://indiacode.gov.in/items/822280bc-89b4-4a39-aa10-72163b7c22f6"
     }
    ],
    "sources": [
@@ -250,7 +261,15 @@ const KB = {
      "url": "https://rtionline.gov.in/faq.php",
      "checked": "2026-11-01",
      "what": "portal covers Central Ministries/Departments and Central public authorities"
+    },
+    {
+     "url": "https://www.pmindia.gov.in/wp-content/uploads/2017/04/RTIRules_2012_English_0.pdf",
+     "checked": "2026-11-01",
+     "what": "rule 6 modes of payment; rule 5 exempts BPL from rule 3 and rule 4 fees"
     }
+   ],
+   "related": [
+    "rti_appeal"
    ]
   },
   {
@@ -297,6 +316,10 @@ const KB = {
     {
      "label": "RTI Act, 2005 – India Code",
      "url": "https://indiacode.gov.in/act/37520cf3-5c3f-4c0b-aa4a-5985e6f522bf/details"
+    },
+    {
+     "label": "Section text on India Code (s.19)",
+     "url": "https://indiacode.gov.in/items/d4740d94-1ae3-4bb5-b8a8-90f86610e1b7"
     }
    ],
    "sources": [
@@ -315,6 +338,9 @@ const KB = {
      "checked": "2026-11-01",
      "what": "first appeal only after 30 days if no reply"
     }
+   ],
+   "related": [
+    "rti_apply"
    ]
   },
   {
@@ -340,13 +366,21 @@ const KB = {
     "cognizable",
     "gunha",
     "गुन्हा",
-    "अपराध"
+    "अपराध",
+    "crpc 154",
+    "154 crpc",
+    "section 154",
+    "s.154",
+    "धारा 154",
+    "कलम 154",
+    "crpc"
    ],
    "facts": [
     "Information about a cognizable offence can be given to the officer in charge of ANY police station, irrespective of the area where the offence happened – this is what people call a \"Zero FIR\" (BNSS 2023 s.173(1)).",
     "It can be given orally (it must be written down and read back to you, and you sign it) or by electronic communication; an e-FIR must be signed by you within three days to be taken on record (s.173(1)).",
     "You must be given a copy of the FIR immediately and free of cost (s.173(2)).",
-    "If a woman reports certain sexual offences, the information must be recorded by a woman police officer or woman officer (s.173(1), first proviso)."
+    "If a woman reports certain sexual offences, the information must be recorded by a woman police officer or woman officer (s.173(1), first proviso).",
+    "The Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS) repealed and replaced the Code of Criminal Procedure, 1973 (BNSS s.531); it is in force from 1 July 2024."
    ],
    "steps": [
     "Go to the nearest police station (any station) or use your State police e-FIR service where available.",
@@ -355,7 +389,8 @@ const KB = {
     "If police refuse, see \"police refused to register my FIR\"."
    ],
    "sections": [
-    "BNSS s.173"
+    "BNSS s.173",
+    "BNSS s.531"
    ],
    "helplines": [
     "112"
@@ -364,6 +399,10 @@ const KB = {
     {
      "label": "Bharatiya Nagarik Suraksha Sanhita, 2023 – India Code",
      "url": "https://indiacode.gov.in/act/72592ac7-d084-4545-95d3-0c98dc49fac3/details"
+    },
+    {
+     "label": "Section text on India Code (s.173)",
+     "url": "https://indiacode.gov.in/items/a0db5735-c3e7-486a-af8c-79e655b828e4"
     }
    ],
    "sources": [
@@ -381,7 +420,15 @@ const KB = {
      "url": "https://www.india.gov.in/directory/helpline",
      "checked": "2026-11-01",
      "what": "112 integrated emergency helpline"
+    },
+    {
+     "url": "https://indiacode.gov.in/server/api/core/bitstreams/9de088be-2a40-479b-ade1-058d0d1677b3/content",
+     "checked": "2026-11-01",
+     "what": "BNSS s.531 repeal of CrPC 1973; India Code record: enforcement date 01-07-2024"
     }
+   ],
+   "related": [
+    "fir_refused"
    ]
   },
   {
@@ -400,19 +447,29 @@ const KB = {
     "तक्रार घेत नाहीत",
     "नकार",
     "पुलिस ने मना",
-    "पोलिसांनी नकार"
+    "पोलिसांनी नकार",
+    "154(3)",
+    "156(3)",
+    "crpc 156",
+    "156 crpc",
+    "section 156",
+    "refused to file"
    ],
    "facts": [
     "If the officer in charge refuses to record your information, you can send the substance of it in writing, by post, to the Superintendent of Police (SP) concerned (BNSS s.173(4)).",
-    "If the SP is satisfied that it discloses a cognizable offence, the SP must investigate or direct an investigation; failing that, you can apply to the Magistrate (s.173(4))."
+    "If the SP is satisfied that it discloses a cognizable offence, the SP must investigate or direct an investigation; failing that, you can apply to the Magistrate (s.173(4)).",
+    "A Magistrate empowered under BNSS s.210 can order an investigation on your application supported by an affidavit (BNSS s.175(3); the affidavit is the one referred to in s.173(4)).",
+    "You can report at any police station, whatever the area where the offence happened, and the informant or victim gets a copy of the FIR at once, free of cost (BNSS s.173(1), s.173(2)).",
+    "For some offences punishable with three years or more but less than seven years, the officer in charge may, with permission from an officer not below Deputy Superintendent of Police, first hold a preliminary enquiry, to be finished within fourteen days, to see whether there is a prima facie case (BNSS s.173(3))."
    ],
    "steps": [
     "Write down what happened and that the police station refused to record it (date, time, officer if known).",
     "Send it by post to the Superintendent of Police of the district; keep the postal receipt.",
-    "If nothing happens, approach the Magistrate – free legal aid (DLSA) can help you draft this."
+    "If nothing happens, apply to the Magistrate with an affidavit (BNSS s.175(3)) – free legal aid (DLSA, 15100) can help you draft this."
    ],
    "sections": [
-    "BNSS s.173"
+    "BNSS s.173",
+    "BNSS s.175"
    ],
    "helplines": [
     "15100"
@@ -421,6 +478,10 @@ const KB = {
     {
      "label": "Bharatiya Nagarik Suraksha Sanhita, 2023 – India Code",
      "url": "https://indiacode.gov.in/act/72592ac7-d084-4545-95d3-0c98dc49fac3/details"
+    },
+    {
+     "label": "Section text on India Code (s.173)",
+     "url": "https://indiacode.gov.in/items/a0db5735-c3e7-486a-af8c-79e655b828e4"
     }
    ],
    "sources": [
@@ -428,7 +489,15 @@ const KB = {
      "url": "https://indiacode.gov.in/items/a0db5735-c3e7-486a-af8c-79e655b828e4",
      "checked": "2026-11-01",
      "what": "s.173(4) text"
+    },
+    {
+     "url": "https://indiacode.gov.in/server/api/core/bitstreams/9de088be-2a40-479b-ade1-058d0d1677b3/content",
+     "checked": "2026-11-01",
+     "what": "full BNSS text, s.175(3): Magistrate may order investigation on application with affidavit under s.173(4)"
     }
+   ],
+   "related": [
+    "fir_zero"
    ]
   },
   {
@@ -450,13 +519,19 @@ const KB = {
     "जमानत",
     "हिरासत",
     "कोठडी",
-    "lockup"
+    "lockup",
+    "crpc 50",
+    "section 41",
+    "41a",
+    "crpc 57",
+    "section 57"
    ],
    "facts": [
     "A person arrested without warrant must be told at once the full particulars of the offence or other grounds for the arrest; if the offence is bailable, the police must tell them they can be released on bail and arrange sureties (BNSS s.47).",
     "The police must immediately inform a relative, friend or other person nominated by the arrested person about the arrest and where they are held, and tell the arrested person about this right (s.48).",
     "Without a Magistrate's special order, a person arrested without warrant cannot be kept in police custody for more than 24 hours, excluding travel time to the Magistrate's court (s.58).",
-    "A person in custody is entitled to free legal services (Legal Services Authorities Act s.12(g))."
+    "A person in custody is entitled to free legal services (Legal Services Authorities Act s.12(g)).",
+    "The Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS) repealed and replaced the Code of Criminal Procedure, 1973 (BNSS s.531); it is in force from 1 July 2024."
    ],
    "steps": [
     "Ask the police for the grounds of arrest and whether the offence is bailable.",
@@ -467,7 +542,8 @@ const KB = {
     "BNSS s.47",
     "BNSS s.48",
     "BNSS s.58",
-    "LSA Act s.12"
+    "LSA Act s.12",
+    "BNSS s.531"
    ],
    "helplines": [
     "15100"
@@ -476,6 +552,10 @@ const KB = {
     {
      "label": "Bharatiya Nagarik Suraksha Sanhita, 2023 – India Code",
      "url": "https://indiacode.gov.in/act/72592ac7-d084-4545-95d3-0c98dc49fac3/details"
+    },
+    {
+     "label": "Section text on India Code (s.47)",
+     "url": "https://indiacode.gov.in/items/84ad41ba-cba6-4022-a353-4194fefe89ba"
     }
    ],
    "sources": [
@@ -498,7 +578,15 @@ const KB = {
      "url": "https://indiacode.gov.in/items/9f7ec898-79db-48fb-8b37-36eb851b2b38",
      "checked": "2026-11-01",
      "what": "s.12(g) persons in custody"
+    },
+    {
+     "url": "https://indiacode.gov.in/server/api/core/bitstreams/9de088be-2a40-479b-ade1-058d0d1677b3/content",
+     "checked": "2026-11-01",
+     "what": "BNSS s.531 repeal of CrPC 1973; India Code record: enforcement date 01-07-2024"
     }
+   ],
+   "related": [
+    "legal_aid"
    ]
   },
   {
@@ -553,6 +641,10 @@ const KB = {
     {
      "label": "Legal Services Authorities Act, 1987 – India Code",
      "url": "https://indiacode.gov.in/act/253a0a32-48bd-447f-923b-a0eb49d108ee/details"
+    },
+    {
+     "label": "Section text on India Code (s.12)",
+     "url": "https://indiacode.gov.in/items/9f7ec898-79db-48fb-8b37-36eb851b2b38"
     }
    ],
    "sources": [
@@ -576,7 +668,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "NALSA Helpline Number 15100; Legal Aid Application e-service"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "lok_adalat",
@@ -614,6 +707,10 @@ const KB = {
     {
      "label": "Legal Services Authorities Act, 1987 – India Code",
      "url": "https://indiacode.gov.in/act/253a0a32-48bd-447f-923b-a0eb49d108ee/details"
+    },
+    {
+     "label": "Section text on India Code (s.19)",
+     "url": "https://indiacode.gov.in/items/3707012d-58ff-4c99-b3d7-d88879cc7170"
     }
    ],
    "sources": [
@@ -627,7 +724,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "s.21 text"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "tele_law",
@@ -678,7 +776,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "PIB Nov 2021: free for s.12 entitled, Rs 30 others; CSC-based video consultations"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "consumer_complaint",
@@ -709,7 +808,7 @@ const KB = {
    "facts": [
     "First, you can register a grievance with the National Consumer Helpline: toll-free 1915 (8 AM to 8 PM) or WhatsApp +91 8800001915, or online at consumerhelpline.gov.in.",
     "A consumer can file a complaint about goods or services with the District Consumer Commission (Consumer Protection Act 2019 s.35).",
-    "Under the Act the District Commission hears complaints where the value paid does not exceed Rs 1 crore, but the Central Government can prescribe a different value by rules (s.34(1)); you can file where the opposite party resides or does business, among other places (s.34(2)).",
+    "Which commission hears your complaint depends on the value paid for the goods or services: up to Rs 50 lakh – District Commission; more than Rs 50 lakh and up to Rs 2 crore – State Commission; more than Rs 2 crore – National Commission (Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021, made under s.34). You can file where the opposite party resides or does business, or where you live or work (s.34(2)).",
     "A complaint must normally be filed within two years from when the cause of action arose; delay can be excused for sufficient cause (s.69).",
     "Complaints can be filed online on e-Jagriti (e-jagriti.gov.in), which has integrated the older e-Daakhil filing system."
    ],
@@ -722,7 +821,8 @@ const KB = {
    "sections": [
     "CPA s.34",
     "CPA s.35",
-    "CPA s.69"
+    "CPA s.69",
+    "CPA Jurisdiction Rules 2021"
    ],
    "helplines": [
     "1915"
@@ -739,6 +839,10 @@ const KB = {
     {
      "label": "Consumer Protection Act, 2019 – India Code",
      "url": "https://indiacode.gov.in/act/1b6c1754-47b1-411e-9607-1712a9caf368/details"
+    },
+    {
+     "label": "Section text on India Code (s.34)",
+     "url": "https://indiacode.gov.in/items/c4a8f150-07c4-4c24-990e-214f83c1c68c"
     }
    ],
    "sources": [
@@ -766,8 +870,14 @@ const KB = {
      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190535",
      "checked": "2026-11-01",
      "what": "PIB: e-Jagriti integrates OCMS, e-Daakhil, NCDRC CMS and CONFONET"
+    },
+    {
+     "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1786342",
+     "checked": "2026-11-01",
+     "what": "PIB 30 Dec 2021: Jurisdiction Rules 2021 – District up to Rs 50 lakh, State Rs 50 lakh to Rs 2 crore, National above Rs 2 crore"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "cyber_fraud",
@@ -825,6 +935,9 @@ const KB = {
      "checked": "2026-11-01",
      "what": "1930 - Cyber Crime Helpline"
     }
+   ],
+   "related": [
+    "bank_complaint"
    ]
   },
   {
@@ -847,7 +960,13 @@ const KB = {
     "thrown out of house",
     "shared household",
     "abuse at home",
-    "protection officer"
+    "protection officer",
+    "498a",
+    "498 a",
+    "cruelty",
+    "dahej",
+    "दहेज",
+    "हुंडा"
    ],
    "facts": [
     "Domestic violence includes physical, sexual, verbal and emotional, and economic abuse, including harassment for dowry (Protection of Women from Domestic Violence Act 2005 s.3).",
@@ -855,7 +974,8 @@ const KB = {
     "The Magistrate can pass a protection order stopping the respondent from committing violence, entering her workplace, trying to contact her in any form, or selling or using shared assets and bank accounts (including her stridhan) without leave (s.18).",
     "A residence order can stop her being thrown out of the shared household, whether or not she owns it (s.19).",
     "The Magistrate can order monetary relief for expenses and losses, such as lost earnings and medical expenses (s.20).",
-    "The Women Helpline 181 is toll-free and works 24 hours. Women are entitled to free legal aid."
+    "The Women Helpline 181 is toll-free and works 24 hours. Women are entitled to free legal aid.",
+    "Cruelty by a husband or his relatives is also a crime: punishable with imprisonment of up to three years and a fine (Bharatiya Nyaya Sanhita 2023 s.85; \"cruelty\" is defined in s.86 and includes harassment for dowry). The BNS repealed the Indian Penal Code (BNS s.358). You can report it to the police."
    ],
    "steps": [
     "If you are in danger now, call 112.",
@@ -867,7 +987,10 @@ const KB = {
     "PWDVA s.12",
     "PWDVA s.18",
     "PWDVA s.19",
-    "PWDVA s.20"
+    "PWDVA s.20",
+    "BNS s.85",
+    "BNS s.86",
+    "BNS s.358"
    ],
    "helplines": [
     "181",
@@ -882,6 +1005,14 @@ const KB = {
     {
      "label": "Women Helpline 181 – Ministry of WCD",
      "url": "https://wcd.gov.in/offerings/women--helpline--scheme"
+    },
+    {
+     "label": "Section text on India Code (s.3)",
+     "url": "https://indiacode.gov.in/items/c5b4f170-a132-4a40-ae56-506018e6ddaf"
+    },
+    {
+     "label": "Bharatiya Nyaya Sanhita, 2023 s.85 – India Code",
+     "url": "https://indiacode.gov.in/items/9790a4a7-0e3b-4063-bfed-017a3de6cb2b"
     }
    ],
    "sources": [
@@ -924,7 +1055,25 @@ const KB = {
      "url": "https://wcd.gov.in/offerings/women--helpline--scheme",
      "checked": "2026-11-01",
      "what": "181"
+    },
+    {
+     "url": "https://indiacode.gov.in/items/9790a4a7-0e3b-4063-bfed-017a3de6cb2b",
+     "checked": "2026-11-01",
+     "what": "BNS s.85 cruelty by husband/relative: up to 3 years and fine (text checked in full BNS PDF)"
+    },
+    {
+     "url": "https://indiacode.gov.in/items/b364dd91-5b18-4bd4-87ce-e907b22a3f07",
+     "checked": "2026-11-01",
+     "what": "BNS s.86 cruelty defined (includes dowry harassment)"
+    },
+    {
+     "url": "https://indiacode.gov.in/server/api/core/bitstreams/9a436cb9-d2e9-44fc-a0d4-9576650f970f/content",
+     "checked": "2026-11-01",
+     "what": "full BNS text: s.85, s.86, s.358 repeal of IPC"
     }
+   ],
+   "related": [
+    "legal_aid"
    ]
   },
   {
@@ -970,6 +1119,10 @@ const KB = {
     {
      "label": "POSH Act, 2013 – India Code",
      "url": "https://indiacode.gov.in/act/a6ffa80b-6388-474f-ad11-3634b3a1e94a/details"
+    },
+    {
+     "label": "Section text on India Code (s.4)",
+     "url": "https://indiacode.gov.in/items/b9a522ed-6600-408e-aa9c-76d6a84dc86d"
     }
    ],
    "sources": [
@@ -988,7 +1141,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "s.9: three months"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "senior_maintenance",
@@ -1037,6 +1191,10 @@ const KB = {
     {
      "label": "Senior Citizens Act, 2007 – India Code",
      "url": "https://indiacode.gov.in/act/6cf2de2e-d2f6-4286-a5a2-97c89df01ceb/details"
+    },
+    {
+     "label": "Section text on India Code (s.4)",
+     "url": "https://indiacode.gov.in/items/40bf285c-5467-4b99-b572-046c2a5322c9"
     }
    ],
    "sources": [
@@ -1065,7 +1223,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "PIB: Elder Line, unique number 14567"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "maintenance_family",
@@ -1083,17 +1242,24 @@ const KB = {
     "पोटगी",
     "नवरा पैसे देत नाही",
     "पति खर्च नहीं देता",
-    "separated"
+    "separated",
+    "crpc 125",
+    "125 crpc",
+    "section 125",
+    "धारा 125",
+    "कलम 125"
    ],
    "facts": [
-    "If a person with sufficient means neglects or refuses to maintain his wife who cannot maintain herself, his child who cannot maintain itself, or his father or mother who cannot maintain themselves, a Magistrate of the first class can order a monthly allowance (BNSS 2023 s.144(1))."
+    "If a person with sufficient means neglects or refuses to maintain his wife who cannot maintain herself, his child who cannot maintain itself, or his father or mother who cannot maintain themselves, a Magistrate of the first class can order a monthly allowance (BNSS 2023 s.144(1)).",
+    "The Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS) repealed and replaced the Code of Criminal Procedure, 1973 (BNSS s.531); it is in force from 1 July 2024."
    ],
    "steps": [
     "Collect proof of the relationship and of the other person's income if you can.",
     "File an application before the Magistrate – a free DLSA lawyer can do this for you (15100)."
    ],
    "sections": [
-    "BNSS s.144"
+    "BNSS s.144",
+    "BNSS s.531"
    ],
    "helplines": [
     "15100"
@@ -1102,6 +1268,10 @@ const KB = {
     {
      "label": "Bharatiya Nagarik Suraksha Sanhita, 2023 – India Code",
      "url": "https://indiacode.gov.in/act/72592ac7-d084-4545-95d3-0c98dc49fac3/details"
+    },
+    {
+     "label": "Section text on India Code (s.144)",
+     "url": "https://indiacode.gov.in/items/96c76add-8812-48dd-9798-7adc7f12c7ea"
     }
    ],
    "sources": [
@@ -1109,8 +1279,14 @@ const KB = {
      "url": "https://indiacode.gov.in/items/96c76add-8812-48dd-9798-7adc7f12c7ea",
      "checked": "2026-11-01",
      "what": "s.144(1) text"
+    },
+    {
+     "url": "https://indiacode.gov.in/server/api/core/bitstreams/9de088be-2a40-479b-ade1-058d0d1677b3/content",
+     "checked": "2026-11-01",
+     "what": "BNSS s.531 repeal of CrPC 1973; India Code record: enforcement date 01-07-2024"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "wages_unpaid",
@@ -1157,6 +1333,10 @@ const KB = {
     {
      "label": "Code on Wages, 2019 – India Code",
      "url": "https://indiacode.gov.in/act/20bf2ac3-5d54-4e1a-a06b-e4f19ad582bc/details"
+    },
+    {
+     "label": "Section text on India Code (s.17)",
+     "url": "https://indiacode.gov.in/items/b9485c36-2ab6-4c6f-9de0-37455777b6f0"
     }
    ],
    "sources": [
@@ -1175,7 +1355,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "PIB: four Labour Codes effective from 21st November 2025"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "cheque_bounce",
@@ -1212,6 +1393,10 @@ const KB = {
     {
      "label": "Negotiable Instruments Act, 1881 – India Code",
      "url": "https://indiacode.gov.in/act/747448ca-9071-4fd0-befe-5f418341070b/details"
+    },
+    {
+     "label": "Section text on India Code (s.138)",
+     "url": "https://indiacode.gov.in/items/64a9a186-103f-46ff-b528-9894e1de534f"
     }
    ],
    "sources": [
@@ -1225,7 +1410,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "s.142 one month"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "tenancy_maharashtra",
@@ -1280,7 +1466,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "s.55 text"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "bank_complaint",
@@ -1333,7 +1520,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "RBI FAQ: approach entity first, 30 days, cms.rbi.org.in, 14448 IVRS 24x7, 8 AM–10 PM"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "helplines_women_child",
@@ -1396,7 +1584,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "112 Integrated Helpline (ERSS)"
     }
-   ]
+   ],
+   "related": []
   },
   {
    "id": "mental_health",
@@ -1441,7 +1630,8 @@ const KB = {
      "checked": "2026-11-01",
      "what": "PIB: free, confidential, round-the-clock support through toll-free helpline 14416"
     }
-   ]
+   ],
+   "related": []
   }
  ]
 };
@@ -1481,14 +1671,14 @@ export async function ask(q, langIn) {
   const base = { lang, disclaimer: STR.disclaimer[lang], free_help: freeHelp(KB), built_by: 'Built by Tab, an AI assistant, for team lead Akshay Wagh.' };
   if (!query) return { ...base, type: 'error', text: '' };
   if (isEmergency(query)) { // fixed message, no model call; related KB entries shown as-is
-    const rel = keywordRetrieve(KB, query, 2).map(h => publicEntry(KB.entries.find(e => e.id === h.id)));
+    const rel = keywordRetrieve(KB, query, 2).map(h => publicEntry(KB.entries.find(e => e.id === h.id), true));
     return { ...base, type: 'emergency', text: EMERGENCY_MESSAGE[lang], numbers: EMERGENCY_NUMBERS, entries: rel, model: null };
   }
   const kwHits = keywordRetrieve(KB, query);
   const routed = await chat(routerPrompt(KB, query), { maxTokens: 1000, jsonMode: true, fast: true });
   const routerIds = routed.model ? parseRouter(KB, routed.text) : null;
-  const ids = combineIds(routerIds, kwHits);
-  if (!ids.length) return { ...base, type: 'no_match', text: STR.nomatch[lang], entries: [], model: routed.model, retrieval: { router: routerIds, keyword: kwHits } };
+  const ids = combineIds(routerIds, kwHits, KB);
+  if (!ids.length) return { ...base, type: 'no_match', text: STR.nomatch[lang], entries: [], covered: KB.entries.map(e => ({ id: e.id, title: e.title })), model: routed.model, retrieval: { router: routerIds, keyword: kwHits } };
   const entries = ids.map(id => KB.entries.find(e => e.id === id));
   const out = await chat(answerPrompt(entries, query, lang), { maxTokens: 1600 });
   const allIds = KB.entries.map(e => e.id);

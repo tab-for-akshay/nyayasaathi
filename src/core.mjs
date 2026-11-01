@@ -23,13 +23,13 @@ const EMERGENCY_TERMS = [
   // English
   'suicide', 'suicidal', 'kill myself', 'killing myself', 'end my life', 'take my life', 'want to die', 'wanna die', 'hang myself', 'self harm', 'self-harm',
   'will kill me', 'going to kill me', 'gonna kill me', 'threatening to kill', 'threatened to kill', 'threat to my life', 'life is in danger', 'my life is at risk',
-  'beating me', 'beats me', 'beat me', 'hits me', 'hit me', 'slapped me', 'is hitting me', 'hitting me now', 'attacking me', 'being beaten', 'he is beating', 'raped', 'rape ', 'kidnapped', 'acid attack', 'locked me in',
+  'threatening me', 'threatens me', 'threatened me', 'beating me', 'beats me', 'beat me', 'hits me', 'hit me', 'slapped me', 'is hitting me', 'hitting me now', 'attacking me', 'being beaten', 'he is beating', 'raped', 'rape ', 'kidnapped', 'acid attack', 'locked me in',
   // Hinglish (Latin script)
-  'aatmahatya', 'atmahatya', 'khudkushi', 'marna chahta', 'marna chahti', 'jaan de dunga', 'jaan de dungi', 'jaan se maar', 'maar dalega', 'maar dalenge', 'maar daalega', 'mujhe maar raha', 'marta hai', 'maarta hai', 'peet-ta', 'peetta hai', 'peet raha', 'pit raha', 'balatkar', 'jeev denar',
+  'aatmahatya', 'atmahatya', 'khudkushi', 'marna chahta', 'marna chahti', 'jaan de dunga', 'jaan de dungi', 'jaan se maar', 'maar dalega', 'maar dalenge', 'maar daalega', 'mujhe maar raha', 'dhamki', 'dhamaki', 'maar peet', 'maarpeet', 'marpeet', 'marta hai', 'maarta hai', 'peet-ta', 'peetta hai', 'peet raha', 'pit raha', 'balatkar', 'jeev denar',
   // Hindi
-  'आत्महत्या', 'खुदकुशी', 'ख़ुदकुशी', 'मरना चाहता', 'मरना चाहती', 'जान दे दूंगा', 'जान दे दूंगी', 'जान दे दूँगा', 'जान दे दूँगी', 'जान से मार', 'मार डालेगा', 'मार डालेंगे', 'मार डालूंगा', 'मुझे मार रहा', 'मुझे मार रहे', 'पीट रहा', 'पीट रहे', 'मारता है', 'पीटता है', 'मारते हैं', 'पीटते हैं', 'मारपीट', 'बलात्कार', 'जान को खतरा', 'जान को ख़तरा', 'अपहरण', 'तेजाब', 'तेज़ाब',
+  'आत्महत्या', 'खुदकुशी', 'ख़ुदकुशी', 'मरना चाहता', 'मरना चाहती', 'जान दे दूंगा', 'जान दे दूंगी', 'जान दे दूँगा', 'जान दे दूँगी', 'जान से मार', 'मार डालेगा', 'मार डालेंगे', 'मार डालूंगा', 'मुझे मार रहा', 'मुझे मार रहे', 'पीट रहा', 'पीट रहे', 'मारता है', 'पीटता है', 'मारते हैं', 'पीटते हैं', 'मारपीट', 'धमकी', 'धमका रहा', 'धमकाता', 'बलात्कार', 'जान को खतरा', 'जान को ख़तरा', 'अपहरण', 'तेजाब', 'तेज़ाब',
   // Marathi
-  'जीव देणार', 'जीव द्यायचा', 'जीव देईन', 'मरायचं आहे', 'मरायचे आहे', 'मरून जावंसं', 'जीवे मारण्याची', 'जीवे मारेल', 'मारून टाकेल', 'मारून टाकीन', 'मला मारत आहे', 'मला मारतोय', 'मारहाण करत आहे', 'मारहाण', 'मारतो', 'मारते', 'जीवाला धोका', 'अपहरण'
+  'जीव देणार', 'जीव द्यायचा', 'जीव देईन', 'मरायचं आहे', 'मरायचे आहे', 'मरून जावंसं', 'जीवे मारण्याची', 'जीवे मारेल', 'मारून टाकेल', 'मारून टाकीन', 'मला मारत आहे', 'मला मारतोय', 'मारहाण करत आहे', 'मारहाण', 'मारतो', 'मारते', 'धमकी देत', 'धमकावत', 'धमकी दिली', 'जीवाला धोका', 'अपहरण'
 ];
 export function isEmergency(text) {
   const t = norm(text);
@@ -45,14 +45,14 @@ export const EMERGENCY_NUMBERS = ['112', '181', '14416', '15100'];
 // ---------- UI / fixed strings ----------
 export const STR = {
   disclaimer: {
-    en: 'This is legal information, not legal advice. For advice on your case, talk to a lawyer – free legal aid is available.',
-    hi: 'यह कानूनी जानकारी है, कानूनी सलाह नहीं। अपने मामले में सलाह के लिए वकील से बात करें – मुफ्त कानूनी सहायता उपलब्ध है।',
-    mr: 'ही कायदेशीर माहिती आहे, कायदेशीर सल्ला नाही. तुमच्या प्रकरणासाठी वकिलाशी बोला – मोफत कायदेशीर मदत उपलब्ध आहे.'
+    en: 'This is legal information, not legal advice. NyayaSaathi is not a lawyer and cannot file a case or represent you; for advice on your case, talk to a lawyer – free legal aid is available. "Checked" dates show when the official source was last verified, not a live check.',
+    hi: 'यह कानूनी जानकारी है, कानूनी सलाह नहीं। न्याय साथी वकील नहीं है और आपका केस दायर या आपकी पैरवी नहीं कर सकता; अपने मामले में सलाह के लिए वकील से बात करें – मुफ्त कानूनी सहायता उपलब्ध है। "जाँचा गया" तारीख बताती है कि सरकारी स्रोत आख़िरी बार कब जाँचा गया।',
+    mr: 'ही कायदेशीर माहिती आहे, कायदेशीर सल्ला नाही. न्याय साथी वकील नाही आणि तुमचा खटला दाखल करू शकत नाही किंवा तुमची बाजू मांडू शकत नाही; तुमच्या प्रकरणासाठी वकिलाशी बोला – मोफत कायदेशीर मदत उपलब्ध आहे. "तपासले" तारीख सरकारी स्रोत शेवटचा कधी तपासला ते सांगते.'
   },
   nomatch: {
-    en: 'Sorry – my checked knowledge base does not cover this question yet, so I will not guess. Please contact free legal aid: call the NALSA helpline 15100 or go to the District Legal Services Authority (DLSA) of your district. You can also get advice by video through Tele-Law at a Common Service Centre.',
-    hi: 'क्षमा करें – मेरे जाँचे गए ज्ञानकोश में अभी इस सवाल की जानकारी नहीं है, इसलिए मैं अनुमान नहीं लगाऊँगा। कृपया मुफ्त कानूनी सहायता लें: NALSA हेल्पलाइन 15100 पर कॉल करें या अपने जिले के जिला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें। आप कॉमन सर्विस सेंटर पर टेली-लॉ से वीडियो पर सलाह भी ले सकते हैं।',
-    mr: 'माफ करा – माझ्या तपासलेल्या माहितीसंग्रहात अजून या प्रश्नाची माहिती नाही, म्हणून मी अंदाज लावणार नाही. कृपया मोफत कायदेशीर मदत घ्या: NALSA हेल्पलाइन 15100 वर कॉल करा किंवा तुमच्या जिल्ह्याच्या जिल्हा विधी सेवा प्राधिकरणाशी (DLSA) संपर्क करा. कॉमन सर्व्हिस सेंटरवर टेली-लॉद्वारे व्हिडिओवर सल्लाही मिळू शकतो.'
+    en: 'I only answer from laws and official pages I have checked, and this question is not one of them yet – so I will not guess. Please contact free legal aid: call the NALSA helpline 15100 or go to the District Legal Services Authority (DLSA) of your district. You can also get advice by video through Tele-Law at a Common Service Centre.',
+    hi: 'मैं सिर्फ़ उन्हीं कानूनों और सरकारी पेजों से जवाब देता हूँ जिन्हें मैंने जाँचा है, और यह सवाल अभी उनमें नहीं है – इसलिए मैं अनुमान नहीं लगाऊँगा। कृपया मुफ्त कानूनी सहायता लें: NALSA हेल्पलाइन 15100 पर कॉल करें या अपने जिले के जिला विधिक सेवा प्राधिकरण (DLSA) से संपर्क करें। आप कॉमन सर्विस सेंटर पर टेली-लॉ से वीडियो पर सलाह भी ले सकते हैं।',
+    mr: 'मी फक्त तपासलेल्या कायद्यांवरून आणि सरकारी पानांवरून उत्तर देतो, आणि हा प्रश्न अजून त्यात नाही – म्हणून मी अंदाज लावणार नाही. कृपया मोफत कायदेशीर मदत घ्या: NALSA हेल्पलाइन 15100 वर कॉल करा किंवा तुमच्या जिल्ह्याच्या जिल्हा विधी सेवा प्राधिकरणाशी (DLSA) संपर्क करा. कॉमन सर्व्हिस सेंटरवर टेली-लॉद्वारे व्हिडिओवर सल्लाही मिळू शकतो.'
   },
   fallbackNote: {
     en: 'Showing the checked facts directly from the knowledge base.',
@@ -87,11 +87,13 @@ export function parseRouter(kb, raw) {
     return [...new Set(j.ids.filter(x => valid.has(x)))].slice(0, 3);
   } catch { return null; }
 }
-export function combineIds(routerIds, kwHits) {
+export function combineIds(routerIds, kwHits, kb) {
   const ids = [];
   for (const id of routerIds || []) if (!ids.includes(id)) ids.push(id);
   for (const h of kwHits || []) if (h.score >= 2 && !ids.includes(h.id)) ids.push(h.id);
   if (routerIds === null && kwHits && kwHits.length && !ids.length) ids.push(kwHits[0].id); // model unavailable: best keyword hit
+  // pull in linked entries (e.g. FIR refused -> Zero FIR, RTI -> RTI appeal) so the answer covers the whole escalation ladder
+  if (kb && ids.length) for (const id of [...ids]) { const e = kb.entries.find(x => x.id === id); for (const r of (e && e.related) || []) if (ids.length < 3 && !ids.includes(r)) ids.push(r); }
   return ids.slice(0, 3);
 }
 
@@ -102,14 +104,16 @@ export function entryContext(e) {
 export function answerPrompt(entries, query, lang) {
   const sys = `You are NyayaSaathi, a careful legal-INFORMATION assistant for ordinary people in India. You answer ONLY from the knowledge-base entries given below, which were checked against official government sources.
 Rules:
-- Write the whole answer in ${LANG_NAME[lang]}. Keep Act names and section references recognisable (e.g. "RTI Act s.6", "BNSS s.173").
+- Write the whole answer in ${LANG_NAME[lang]}, including headings. ${lang === 'hi' ? 'Write the word for section as "धारा" (e.g. "BNSS धारा 173").' : lang === 'mr' ? 'Write the word for section as "कलम" (e.g. "BNSS कलम 173").' : 'Cite sections like "RTI Act s.6", "BNSS s.173".'}
+- If the person cites an old law (CrPC/IPC), use only what the entries say about the new law; do not state old-to-new section equivalents unless an entry states them.
 - Use only facts, numbers, section numbers, fees, time limits and helpline numbers that appear in the entries. Never add any other law, section, number, website or helpline.
 - Do not draw conclusions the entries do not state. If the entries do not answer the exact point asked (for example a deposit refund, a punishment, a deadline), say clearly that the checked information does not cover that point, share only what the entries do say that is relevant, and suggest free legal aid.
 - Write every number with ASCII digits (0-9), exactly as in the entries.
 - Simple words, short sentences, warm tone. No legal jargon without explaining it.
 - Do not add examples, offices, departments, organisations, websites or procedures that are not named in the entries – not even as "e.g.".
 - Never mention the knowledge base, entries or their ids (like [rti_apply] or "cyber fraud entry"); cite the Act and section, or the official helpline/portal, instead.
-- Format: 1) one or two short paragraphs explaining the person's rights, citing the Act/section from the entries in brackets; 2) the heading "${{ en: 'Next steps', hi: 'आगे क्या करें', mr: 'पुढील पावले' }[lang]}", then a numbered list of 3-5 steps taken from the entries.
+- Include every time limit, fee and escalation step (e.g. appeals) from the entries that applies to the person's next steps.
+- Format: 1) FIRST LINE: the single most important action or right, in one plain sentence (e.g. what to do today, with the fee or deadline). 2) At most 120 words explaining the person's rights, each claim followed by its Act/section in brackets. 3) the heading "${{ en: 'Next steps', hi: 'आगे क्या करें', mr: 'पुढील पावले' }[lang]}", then a numbered list of 3-5 steps taken from the entries.
 - Do not add a "free help" line or a disclaimer – the app shows both. Do not predict who will win.
 - Plain text only, no markdown symbols like ** or #.
 Knowledge-base entries:
@@ -130,7 +134,7 @@ export function allowedNumbers(entries, extra = []) {
   }
   return set;
 }
-const SECTION_RE = /(?:\bsections?\b|\bsec\.?|\bs\.|\bu\/s\b|धारा|धारा-|कलम|सेक्शन|नियम|\brule\b)\s*(\d+[a-z]?)/gi;
+const SECTION_RE = /(?:\bsections?\b|\bsec\.?|\bs\.|\bu\/s\b|धारा|धारा-|कलम|सेक्शन|(?<![\u0900-\u097F])नियम|\brule\b)\s*(\d+[a-z]?)/gi; // "अधिनियम" (Act) is not "नियम" (rule)
 export function sectionNumbersIn(s) { const out = []; let m; const t = asciiDigits(s); SECTION_RE.lastIndex = 0; while ((m = SECTION_RE.exec(t))) out.push(m[1].toLowerCase()); return out; }
 export function allowedSections(entries) {
   const set = new Set();
@@ -166,11 +170,11 @@ export function fallbackAnswer(entries) {
 export function retryNote(problems) {
   return 'Your previous draft contained these items that are NOT in the knowledge-base entries: ' + problems.map(p => p.kind + ' ' + p.value).join(', ') + '. Rewrite the answer without them, using only numbers, sections and websites that appear in the entries.';
 }
-export function cleanModelText(s, ids = []) { let t = String(s || ''); for (const id of ids) t = t.split('(' + id + ')').join('').split('[' + id + ']').join('').split(id).join(''); return t.replace(/\*\*|__|^#+\s*/gm, '').replace(/\n{3,}/g, '\n\n').trim(); }
+export function cleanModelText(s, ids = []) { let t = String(s || '').replace(/[\u2010-\u2015\u2212]/g, '-').replace(/[\u00a0\u202f\u2007]/g, ' '); for (const id of ids) t = t.split('(' + id + ')').join('').split('[' + id + ']').join('').split(id).join(''); return t.replace(/\*\*|__|^#+\s*/gm, '').replace(/\n{3,}/g, '\n\n').trim(); }
 
 // ---------- free-help block (numbers come from the KB entries) ----------
 export function freeHelp(kb) {
   const la = kb.entries.find(e => e.id === 'legal_aid'), tl = kb.entries.find(e => e.id === 'tele_law');
   return { helpline: '15100', legal_aid_link: la.links[0], tele_law_link: tl.links[0], nalsa: { label: 'NALSA', url: 'https://nalsa.gov.in/' } };
 }
-export function publicEntry(e) { return { id: e.id, title: e.title, sections: e.sections, helplines: e.helplines, links: e.links, sources: e.sources }; }
+export function publicEntry(e, withFacts = false) { const p = { id: e.id, title: e.title, sections: e.sections, helplines: e.helplines, links: e.links, sources: e.sources }; if (withFacts) p.facts = e.facts; return p; }

@@ -46,3 +46,9 @@ test('every helpline, section and number used anywhere in the KB passes against 
     assert.equal(g.ok, true, e.id + ' ' + JSON.stringify(g.problems));
   }
 });
+
+test('Hindi "अधिनियम 2019" (Act year) is not read as a rule number; unicode hyphens are normalised', () => {
+  assert.deepEqual(c.sectionNumbersIn('उपभोक्ता संरक्षण अधिनियम 2019 की धारा 35'), ['35']);
+  assert.deepEqual(c.sectionNumbersIn('RTI नियम 5'), ['5']);
+  assert.equal(c.cleanModelText('e\u2011jagriti.gov.in 34\u201135'), 'e-jagriti.gov.in 34-35');
+});
