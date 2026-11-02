@@ -1774,18 +1774,30 @@ const SECRETS = globalThis.__NYAYA_SECRETS__ || {}; // injected at deploy time o
 const MODELS = [
   { name: 'openai/gpt-oss-120b', url: 'https://api.groq.com/openai/v1/chat/completions', key: 'GROQ', extra: { reasoning_effort: 'low' } },
   { name: 'openai/gpt-oss-20b', url: 'https://api.groq.com/openai/v1/chat/completions', key: 'GROQ', extra: { reasoning_effort: 'low' } },
-  { name: 'gemini-3.5-flash-lite', url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', key: 'GEMINI', extra: {} }
+  { name: 'gemini-3.5-flash-lite', url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', key: 'GEMINI', extra: {} },
+  // Red-team fix (2 Nov 2026): a free route on its own quota for when the Groq/Gemini free quotas are used up.
+  { name: 'mercury-3', url: 'https://api.inceptionlabs.ai/v1/chat/completions', key: 'INCEPTION', extra: {}, minTokens: 3000 }
 ];
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
 
+// Per-visitor limit (red-team fix, 2 Nov 2026): /api/ask spends free model quota, so cap it.
+const RL = new Map();
+function rateLimited(request, max = 30, windowMs = 10 * 60 * 1000) {
+  const ip = (request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || 'anon').split(',')[0].trim();
+  const now = Date.now(); const hits = (RL.get(ip) || []).filter(t => now - t < windowMs);
+  if (hits.length >= max) { RL.set(ip, hits); return true; }
+  hits.push(now); RL.set(ip, hits); if (RL.size > 5000) RL.delete(RL.keys().next().value);
+  return false;
+}
+
 async function chat(messages, { maxTokens = 1400, jsonMode = false, fast = false } = {}) {
   const tries = [];
-  const order = fast ? [MODELS[1], MODELS[0], MODELS[2]] : MODELS; // router: small model first, saves the big model's quota
+  const order = fast ? [MODELS[1], MODELS[0], MODELS[2], MODELS[3]] : MODELS; // router: small model first, saves the big model's quota
   for (const m of order) {
     const key = SECRETS[m.key]; if (!key) { tries.push(m.name + ': no key'); continue; }
     const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 25000); const t0 = Date.now();
     try {
-      const body = { model: m.name, messages, temperature: 0.1, max_tokens: maxTokens, ...m.extra };
+      const body = { model: m.name, messages, temperature: 0.1, max_tokens: Math.max(maxTokens, m.minTokens || 0), ...m.extra };
       if (jsonMode) body.response_format = { type: 'json_object' };
       const r = await fetch(m.url, { method: 'POST', signal: ctl.signal, headers: { authorization: 'Bearer ' + key, 'content-type': 'application/json' }, body: JSON.stringify(body) });
       const j = await r.json().catch(() => ({}));
@@ -1833,10 +1845,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (/\/(worker|core)\.m?js$/.test(url.pathname) || url.pathname.startsWith('/src/')) return new Response('Not found', { status: 404 });
-    if (url.pathname === '/api/health') return json({ ok: true, kb_entries: KB.entries.length, kb_checked_on: KB.checked_on, models: MODELS.map(m => m.name), keys: { groq: !!SECRETS.GROQ, gemini: !!SECRETS.GEMINI } });
+    if (url.pathname === '/api/health') return json({ ok: true, kb_entries: KB.entries.length, kb_checked_on: KB.checked_on, models: MODELS.map(m => m.name), keys: { groq: !!SECRETS.GROQ, gemini: !!SECRETS.GEMINI, inception: !!SECRETS.INCEPTION } });
     if (url.pathname === '/api/kb') return json({ checked_on: KB.checked_on, note: KB.note, entries: KB.entries.map(e => ({ ...publicEntry(e), facts: e.facts, steps: e.steps })) });
     if (url.pathname === '/api/ask') {
       if (request.method !== 'POST') return json({ error: 'POST {q, lang}' }, 405);
+      if (rateLimited(request)) return json({ type: 'error', text: 'Too many questions from your network in a few minutes. Please wait and try again. For help now call the NALSA legal aid helpline 15100.' }, 429);
       let body = {}; try { body = await request.json(); } catch {}
       try { return json(await ask(body.q, body.lang)); } catch (e) { return json({ type: 'error', text: 'Something went wrong. For help now call the NALSA legal aid helpline 15100.', error: String(e).slice(0, 120) }, 500); }
     }
