@@ -1780,14 +1780,22 @@ const MODELS = [
 ];
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
 
-// Per-visitor limit (red-team fix, 2 Nov 2026): /api/ask spends free model quota, so cap it.
+// Per-visitor limit (red-team fix, 2 Nov 2026). Counts in the site's KV store when bound (shared by every
+// server instance), else in this instance's memory.
 const RL = new Map();
-function rateLimited(request, max = 30, windowMs = 10 * 60 * 1000) {
+async function rateLimited(request, env, max = 30, windowMs = 10 * 60 * 1000) {
   const ip = (request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || 'anon').split(',')[0].trim();
-  const now = Date.now(); const hits = (RL.get(ip) || []).filter(t => now - t < windowMs);
-  if (hits.length >= max) { RL.set(ip, hits); return true; }
-  hits.push(now); RL.set(ip, hits); if (RL.size > 5000) RL.delete(RL.keys().next().value);
-  return false;
+  const slot = Math.floor(Date.now() / windowMs);
+  if (env && env.DATA && env.DATA.get) {
+    try {
+      const k = 'rl:' + ip + ':' + slot; const n = parseInt(await env.DATA.get(k) || '0', 10) + 1;
+      await env.DATA.put(k, String(n), { expirationTtl: Math.max(60, Math.ceil(windowMs / 1000) * 2) });
+      return n > max;
+    } catch (e) { /* fall through to memory */ }
+  }
+  const k = ip + ':' + slot; const n = (RL.get(k) || 0) + 1; RL.set(k, n);
+  if (RL.size > 5000) RL.delete(RL.keys().next().value);
+  return n > max;
 }
 
 async function chat(messages, { maxTokens = 1400, jsonMode = false, fast = false } = {}) {
@@ -1849,7 +1857,7 @@ export default {
     if (url.pathname === '/api/kb') return json({ checked_on: KB.checked_on, note: KB.note, entries: KB.entries.map(e => ({ ...publicEntry(e), facts: e.facts, steps: e.steps })) });
     if (url.pathname === '/api/ask') {
       if (request.method !== 'POST') return json({ error: 'POST {q, lang}' }, 405);
-      if (rateLimited(request)) return json({ type: 'error', text: 'Too many questions from your network in a few minutes. Please wait and try again. For help now call the NALSA legal aid helpline 15100.' }, 429);
+      if (await rateLimited(request, env)) return json({ type: 'error', text: 'Too many questions from your network in a few minutes. Please wait and try again. For help now call the NALSA legal aid helpline 15100.' }, 429);
       let body = {}; try { body = await request.json(); } catch {}
       try { return json(await ask(body.q, body.lang)); } catch (e) { return json({ type: 'error', text: 'Something went wrong. For help now call the NALSA legal aid helpline 15100.', error: String(e).slice(0, 120) }, 500); }
     }
